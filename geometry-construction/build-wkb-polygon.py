@@ -51,15 +51,11 @@ gdb_name = 'WKB_Sample.gdb'
 fc_name = 'WKB_Polygon'
 
 #Create the geodatabase is if does not exist
-if os.path.exists(os.path.join(path,gdb_name)):
-    pass
-else:
+if not os.path.exists(os.path.join(path,gdb_name)):
     arcpy.CreateFileGDB_management(path, gdb_name)
 
 #Create the feature class if it does not exist
-if arcpy.Exists(os.path.join(path,gdb_name,fc_name)):
-    pass
-else:
+if not arcpy.Exists(os.path.join(path,gdb_name,fc_name)):
     arcpy.CreateFeatureclass_management(os.path.join(path, gdb_name), fc_name, 'POLYGON', spatial_reference=4326)
 
 #Create a bytearray object to store the well-known binary
