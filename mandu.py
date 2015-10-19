@@ -16,7 +16,7 @@ idx_b_st = "CREATE INDEX {0}.A{1}_IX1 ON {0}.{2}({3}) INDEXTYPE IS sde.st_spatia
 idx_a_st = "CREATE INDEX {0}.A{1}_IX1_A ON {0}.A{2}({3}) INDEXTYPE IS sde.st_spatial_index parameters ('st_grids={4},{5},{6} st_srid={7}')"
 get_srid = "SELECT AUTH_SRID FROM SPATIAL_REFERENCES WHERE SRID = {0}"
 
-for dir, dirpath, files in arcpy.da.Walk(gdb):
+for dir, dirpath, files in arcpy.da.Walk(gdb, datatype='FeatureClass'):
     for file in files:
         path = os.path.join(dir,file)
         desc = arcpy.Describe(path)
