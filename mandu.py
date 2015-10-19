@@ -14,7 +14,7 @@ idx_b = 'CREATE INDEX {0}.A{1}_IX1 ON {0}.{2}({3}) INDEXTYPE IS MDSYS.SPATIAL_IN
 idx_a = 'CREATE INDEX {0}.A{1}_IX1_A ON {0}.A{2}({3}) INDEXTYPE IS MDSYS.SPATIAL_INDEX'
 
 
-for dir, dirpath, files in arcpy.da.Walk(gdb):
+for dir, dirpath, files in arcpy.da.Walk(gdb, datatype="FeatureClass"):
     for file in files:
         path = os.path.join(dir,file)
         desc = arcpy.Describe(path)
